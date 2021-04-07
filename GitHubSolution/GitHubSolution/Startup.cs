@@ -28,7 +28,7 @@ namespace GitHubSolution
         {
             services.AddControllers();
             //Dependency Injection
-            services.AddTransient<IBranchRepository, BranchRepository>();
+            services.AddTransient<IBranchServices, BranchServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
