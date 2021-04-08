@@ -2,6 +2,13 @@
 
 GitHubAutomate is a simple web service that listens for organization events to know when a repository has been created. When the repository is created, this service automates the protection of the default branch. It will also create an issue with @mention that outlines the protections that were added.
 
+Technologies & versions
+*  ASP .NET Core Web API
+*  .Net Core version 3.1
+
+3rd party libraries used
+*  Octokit.net - https://github.com/octokit/octokit.net
+
 # Usage
 Deploy the service to any platform like Azure or AWS and change the following configuration values in the AppSettings to reflect your GitHub environment details
 
