@@ -19,6 +19,7 @@ namespace GitHubSolution.Controllers
         private readonly IIssueServices _issueServices;
         private readonly IWebHookServices _webHookServices;
         private readonly ILogger<RepositoryController> _logger;
+        private const string repoCreatedAction = "created";
         public RepositoryController(IBranchServices branchServices, IIssueServices issueServices, IWebHookServices webHookServices,
             ILogger<RepositoryController> logger)
         {
@@ -55,15 +56,24 @@ namespace GitHubSolution.Controllers
                     return Unauthorized();
                 }
 
-                //Get the default branch for the repository
-                var defaultBranch = await _branchServices.GetDefaultBranch(payload.repository.owner.login, payload.repository.name);
+                //Protect branch if the action is a repo creation
+                if (payload.action == repoCreatedAction)
+                {
+                    //Get the default branch for the repository
+                    var defaultBranch = await _branchServices.GetDefaultBranch(payload.repository.owner.login, payload.repository.name);
 
-                //Protect the default repository
-                var protectBranchResponse = await _branchServices.ProtectBranch(defaultBranch, payload.repository.owner.login, payload.repository.name);
+                    //Protect the default repository
+                    var protectBranchResponse = await _branchServices.ProtectBranch(defaultBranch, payload.repository.owner.login, payload.repository.name);
 
-                bool res = await _issueServices.CreateIssue(payload.repository.owner.login, payload.repository.name, "Protection applied to the default branch " + defaultBranch + " of the new repository "
-                    + payload.repository.name, issueText);
-                return Ok(protectBranchResponse);
+                    bool issueResult = await _issueServices.CreateIssue(payload.repository.owner.login, payload.repository.name, "Protection applied to the default branch " + defaultBranch + " of the new repository "
+                        + payload.repository.name, issueText);
+
+                    return Ok(protectBranchResponse);
+                }
+                else
+                {
+                    return Ok("Notification succsesfully received. No action taken since the action is not a repo creation");
+                }
             }
             catch (Exception ex)
             {
