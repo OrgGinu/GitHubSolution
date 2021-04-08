@@ -12,7 +12,7 @@ Change the following configuration values in the AppSettings to reflect your Git
 
 Set up a WebHook in the desired GitHub organization. 
 https://docs.github.com/en/developers/webhooks-and-events/creating-webhooks
-* Note that the Payload URL should match the endpoint of your API
+* Note that the Payload URL should match your PI endpoint
 * Select the individual events radio button and check repositories so that the webhook triggers on repository events
 * Set the content type to be application/json
 * Save the Webhook
