@@ -18,3 +18,6 @@ https://docs.github.com/en/developers/webhooks-and-events/creating-webhooks
 * Save the Webhook
 
 Test the App by creating a new repository in the organization and see that the branch protection is applied to the default brnach as well as an issue is created under the repo.
+
+How Webhook authentication works
+https://docs.github.com/en/developers/webhooks-and-events/securing-your-webhooks
