@@ -19,12 +19,12 @@ Deploy the service to any desired platform like Azure, AWS or GCP and change the
 
 Set up a WebHook in the desired GitHub organization. 
 https://docs.github.com/en/developers/webhooks-and-events/creating-webhooks
-* Note that the Payload URL should match your PI endpoint
+* Note that the Payload URL should match your API endpoint
 * Select the individual events radio button and check repositories so that the webhook triggers on repository events
 * Set the content type to be application/json
 * Save the Webhook
 
-Test the App by creating a new repository in the organization and see that the branch protection is applied to the default brnach as well as an issue is created under the repo.
+Test the App by creating a new repository in the organization and see that the branch protection is applied to the default branch as well as an issue is created under the repo.
 
 How Webhook authentication works
 https://docs.github.com/en/developers/webhooks-and-events/securing-your-webhooks
