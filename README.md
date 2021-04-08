@@ -1,6 +1,6 @@
 # GitHubAutomate
 
-GitHubAutomate is a simple web service that listens for organization events to know when a repository has been created. When the repository is created, this service automates the protection of the default branch. It will also create an issue with @mention that outlines the protections that were added.
+GitHubAutomate is a simple web service that listens for GitHub organization events to know when a repository has been created. When the repository is created, this service automates the protection of the default branch of the repository. It will also create an issue with @mention that outlines the protections that were added.
 
 Technologies & versions
 *  ASP .NET Core Web API
