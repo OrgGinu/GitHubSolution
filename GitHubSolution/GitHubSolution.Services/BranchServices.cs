@@ -16,7 +16,7 @@ namespace GitHubSolution.Services
             _config = config;
             _githubClient = new GitHubClientHelper(_config["GitHubSetting:RepoName"], _config["GitHubSetting:Token"]).GetGitHubClient();
         }
-        public async Task<ProtectBranchResponse> ProtectBranch(string branchName)
+        public async Task<ProtectBranchResponse> ProtectBranch(string branchName, string owner, string repoName)
         {
             var responseModel = new ProtectBranchResponse();
             try
@@ -26,8 +26,8 @@ namespace GitHubSolution.Services
                     new BranchProtectionRequiredStatusChecksUpdate(true, new[] { "build", "test" }),
                         new BranchProtectionRequiredReviewsUpdate(false, true, 2), true);
 
-                var updateBranchResponse = await _githubClient.Repository.Branch.UpdateBranchProtection(_config["GitHubSetting:Owner"], _config["GitHubSetting:RepoName"], branchName, update);
-                
+                var updateBranchResponse = await _githubClient.Repository.Branch.UpdateBranchProtection(owner, repoName, branchName, update);
+
                 responseModel.IsSuccess = true;
                 responseModel.Message = "Branch protection applied succesfully";
                 return responseModel;
@@ -39,6 +39,20 @@ namespace GitHubSolution.Services
                 return responseModel;
             }
 
+        }
+
+        public async Task<string> GetDefaultBranch(string owner, string repoName)
+        {
+            try
+            {
+                var repositoryDetails = await _githubClient.Repository.Get(owner,
+                    repoName);
+                return repositoryDetails.DefaultBranch;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
