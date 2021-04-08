@@ -2,15 +2,10 @@ using GitHubSolution.Services;
 using GitHubSolution.Services.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace GitHubSolution
 {
@@ -26,9 +21,11 @@ namespace GitHubSolution
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers() ;
             //Dependency Injection
             services.AddTransient<IBranchServices, BranchServices>();
+            services.AddTransient<IIssueServices, IssueServices>();
+            services.AddTransient<IWebHookServices, WebHookServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
