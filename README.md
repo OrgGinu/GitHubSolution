@@ -10,7 +10,7 @@ Technologies & versions
 *  Octokit.net - https://github.com/octokit/octokit.net
 
 # Usage
-Deploy the service to any platform like Azure or AWS and change the following configuration values in the AppSettings to reflect your GitHub environment details
+Deploy the service to any desired platform like Azure, AWS or GCP and change the following configuration values in the AppSettings to reflect your GitHub environment details
 
 * RepoName: "YOUR REPO NAME"
 * Token: "PERSONAL ACCESS TOKEN"
