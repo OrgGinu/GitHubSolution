@@ -5,10 +5,10 @@ GitHubAutomate is a simple web service that listens for organization events to k
 # Usage
 Change the following configuration values in the AppSettings to reflect your GitHub environment details
 
-* RepoName: "<YOUR REPO NAME>"
-* Token: "<PERSONAL ACCESS TOKEN>"
-* Owner: "<REPO OWNER>"
-* WebHookSecret: "<WEBHOOK SECRET>"
+* RepoName: "YOUR REPO NAME"
+* Token: "PERSONAL ACCESS TOKEN"
+* Owner: "REPO OWNER"
+* WebHookSecret: "WEBHOOK SECRET"
 
 Set up a WebHook in the desired GitHub organization. 
 https://docs.github.com/en/developers/webhooks-and-events/creating-webhooks
